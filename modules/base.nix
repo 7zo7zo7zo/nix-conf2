@@ -52,6 +52,7 @@
 				zip
 				unzip
 				#unrar
+				just
 			];
 
 			# Some programs need SUID wrappers, can be configured further or are
