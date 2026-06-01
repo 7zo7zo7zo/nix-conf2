@@ -7,6 +7,7 @@
 		modules = with inputs.self.modules.nixos; [
 			base
 			user
+			audio
 
 			{
 				imports = [
