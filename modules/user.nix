@@ -1,4 +1,5 @@
 { inputs, ... }:
+
 {
 	flake.modules.nixos.user = {
 		home-manager.sharedModules = [
