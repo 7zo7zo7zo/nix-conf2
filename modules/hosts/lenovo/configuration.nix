@@ -1,8 +1,6 @@
 { inputs, ... }:
 
 {
-	flake.primaryUser = "steve";
-
 	flake.nixosConfigurations.lenovo = inputs.nixpkgs.lib.nixosSystem {
 		system = "x86_64-linux";
 
@@ -12,7 +10,8 @@
 
 			{
 				imports = [
-					./hardware-configuration.nix
+					./_hardware-configuration.nix
+					inputs.home-manager.nixosModules.home-manager
 				];
 
 				networking.hostName = "lenovo";
@@ -21,7 +20,14 @@
 				home-manager = {
 					useGlobalPkgs = true;
 					useUserPackages = true;
-					home.stateVersion = "25.11";
+
+					users.steve = {
+						home.stateVersion = "25.11";
+
+						imports = with inputs.self.modules.homeManager; [
+							user
+						];
+					};
 				};
 			}
 		];
