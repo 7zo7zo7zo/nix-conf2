@@ -1,6 +1,8 @@
 { inputs, ... }:
 
 {
+	flake.primaryUser = "steve";
+
 	flake.nixosConfigurations.lenovo = inputs.nixpkgs.lib.nixosSystem {
 		system = "x86_64-linux";
 
