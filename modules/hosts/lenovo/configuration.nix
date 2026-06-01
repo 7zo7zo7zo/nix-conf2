@@ -22,9 +22,9 @@
 					useGlobalPkgs = true;
 					useUserPackages = true;
 					home.stateVersion = "25.11";
-				}
+				};
 			}
 		];
-	}
+	};
 }
 
