@@ -8,18 +8,18 @@
 
 		programs.zsh.enable = true;
 
-		users.users.steve = {
+		users.users.${config.flake.primaryUser} = {
 			isNormalUser = true;
-			home = "/home/steve";
+			home = "/home/${config.flake.primaryUser}";
 			shell = pkgs.zsh;
 			extraGroups = [ "wheel" "audio" "video" ];
 		};
 	}
 
 	flake.modules.homeManager.user = {
-		user.${user} = {
-			home.username = ${user};
-			home.homeDirectory = "/home/${user}";
+		user.${config.flake.primaryUser} = {
+			home.username = ${config.flake.primaryUser};
+			home.homeDirectory = "/home/${config.flake.primaryUser}";
 		}
 	};
 }
