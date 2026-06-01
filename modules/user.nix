@@ -1,25 +1,22 @@
-{ inputs, ... }:
+{ inputs, pkgs, config, ... }:
 
 {
-	flake.modules.nixos.user = {
-		home-manager.sharedModules = [
-			inputs.self.modules.homeManager.user
-		];
+	flake.modules.nixos.user =
+		{pkgs, ...}:
+		{
 
-		programs.zsh.enable = true;
+			programs.zsh.enable = true;
 
-		users.users.${config.flake.primaryUser} = {
-			isNormalUser = true;
-			home = "/home/${config.flake.primaryUser}";
-			shell = pkgs.zsh;
-			extraGroups = [ "wheel" "audio" "video" ];
-		};
-	}
+			users.users.steve = {
+				isNormalUser = true;
+				home = "/home/steve";
+				shell = pkgs.zsh;
+				extraGroups = [ "wheel" "audio" "video" ];
+			};
+	};
 
 	flake.modules.homeManager.user = {
-		user.${config.flake.primaryUser} = {
-			home.username = ${config.flake.primaryUser};
-			home.homeDirectory = "/home/${config.flake.primaryUser}";
-		}
+		home.username = "steve";
+		home.homeDirectory = "/home/steve";
 	};
 }
